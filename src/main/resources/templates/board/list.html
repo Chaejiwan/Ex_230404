@@ -20,7 +20,7 @@
                     <input type="text" class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary searchBtn" type="submit">Search</button>
-                        <button class="btn btn-outline-secondary clearBtn" type="reset">Clear</button>
+                        <button class="btn btn-outline-secondary clearBtn" type="button">Clear</button>
                     </div>
 
                 </div>
@@ -79,9 +79,31 @@
         </div>  <!--end col -->
     </div>  <!-- end row-->
 
+<!-- 이벤트처리 -->
+    <script layout:fragment="script" th:inline="javascript">
+        document.querySelector(".pagination").addEventListener("click", function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            const target = e.target
+            if(target.tagName !== 'A') {
+                return
+            }
+            const num = target.getAttribute("data-num")
+            const formObj = document.querySelector("form")
+            formObj.innerHTML += `<input type='hidden' name='page' value='${num}'>`
+            formObj.submit();    },false)
+        document.querySelector(".clearBtn").addEventListener("click", function (e){
+            e.preventDefault()
+            e.stopPropagation()
+            self.location ='/board/list'
+        },false)
+        //show modal
+        const result = [[${result}]]
+        const modal = new bootstrap.Modal(document.querySelector(".modal"))
 
-        <script layout:fragment="script" th:inline="javascript">
-            console.log("script test..");
+        if(result){
+            modal.show()
+        }
         </script>
-
+</div>
 </html>
