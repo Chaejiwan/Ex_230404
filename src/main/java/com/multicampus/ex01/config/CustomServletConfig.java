@@ -11,6 +11,7 @@ public class CustomServletConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
         registry.addResourceHandler("/js/**")
                 .addResourceLocations("classpath:/static/js/");
         registry.addResourceHandler("/fonts/**")
@@ -19,5 +20,7 @@ public class CustomServletConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/static/css/");
         registry.addResourceHandler("/assets/**").
                 addResourceLocations("classpath:/static/assets/");
+
     }
+
 }

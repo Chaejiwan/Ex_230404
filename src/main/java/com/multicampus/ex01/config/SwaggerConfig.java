@@ -9,6 +9,7 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+
 @Configuration
 public class SwaggerConfig {
     @Bean
@@ -20,10 +21,13 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
+
     }
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Boot 01 Project Swagger")
                 .build();
     }
+
 }
